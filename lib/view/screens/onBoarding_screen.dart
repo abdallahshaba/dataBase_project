@@ -1,4 +1,6 @@
-import 'package:e_commerce_app14/core/constant/image_assets.dart';
+import 'package:e_commerce_app14/core/constant/colorsStyle.dart';
+import 'package:e_commerce_app14/core/constant/imageAsset.dart';
+import 'package:e_commerce_app14/core/constant/text_style.dart';
 import 'package:e_commerce_app14/view/widgets/onBoarding_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -17,24 +19,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
   final List<Map<String, String>> onboardingData = [
      {
-    "title": "Welcome to the University System",
-    "description": "Manage your academic life easily in one place.",
-    "image": AppImageAsset.university1, // Replace with your image path
+    "title": "All your favorites",
+    "description": "Get all your loved foodsin one once place, \n you just place the orer we do the best",
+    "image": AppImageAsset.onBoarding1 , // Replace with your image path
   },
   {
-    "title": "Register Your Courses",
-    "description": "Select and register your courses in just a few steps.",
-    "image": AppImageAsset.university2, // Replace with your image path
+    "title": "Order from choosen chef",
+    "description": "Get all your loved foodsin one once place, \n you just place the orer we do the best",
+    "image":AppImageAsset.onBoarding2 , // Replace with your image path
   },
   {
-    "title": "Track Your Grades",
-    "description": "View your academic performance and results anytime.",
-    "image": AppImageAsset.university3, // Replace with your image path
-  },
-  {
-    "title": "University Services",
-    "description": "Access all important services like schedules, exams, and more.",
-    "image": AppImageAsset.university1, // Replace with your image path
+    "title": "Free delivery offers",
+    "description": "Get all your loved foodsin one once place, \n you just place the orer we do the best",
+    "image":AppImageAsset.onBoarding3 , // Replace with your image path
   },
   ];
 
@@ -47,6 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(left: 20 , right: 20 , bottom: 20),
         child: Stack(
@@ -83,23 +81,45 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     const SizedBox(height: 20),
                     _currentPage == onboardingData.length - 1
-                        ? ElevatedButton(
-                            onPressed: () {
-                              // Navigate to home screen or next step
-                              // Example: Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
-                              print("Onboarding completed!");
-                            },
-                            child: const Text("Get Started"),
-                          )
-                        : ElevatedButton(
-                            onPressed: () {
-                              _pageController.nextPage(
-                                duration: const Duration(milliseconds: 300),
-                                curve: Curves.ease,
-                              );
-                            },
-                            child: const Text("Next"),
-                          ),
+                        ? Container(
+                           height: 50,
+                          width: double.infinity ,
+                          child: ElevatedButton(
+                                 style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadiusGeometry.circular(10)
+                                ),
+                                foregroundColor: Colors.white,
+                                backgroundColor: AppColors.mainColor),
+                            
+                              onPressed: () {
+                                // Navigate to home screen or next step
+                                // Example: Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+                                print("Onboarding completed!");
+                              },
+                              child: const Text("Get Started" , style: Styles.boldtextStyle18,),
+                            ),
+                        )
+                        : Container(
+                          height: 50,
+                          width: double.infinity ,
+                          child: ElevatedButton(
+                            
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadiusGeometry.circular(10)
+                              ),
+                              foregroundColor: Colors.white,
+                              backgroundColor: AppColors.mainColor),
+                              onPressed: () {
+                                _pageController.nextPage(
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.ease,
+                                );
+                              },
+                              child: const Text("Next" , style: Styles.boldtextStyle18,),
+                            ),
+                        ),
                   ],
                 ),
               ),
@@ -116,7 +136,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       height: 10,
       width: _currentPage == index ? 24 : 10,
       decoration: BoxDecoration(
-        color: _currentPage == index ? Colors.blue : Colors.grey,
+        color: _currentPage == index ?AppColors.mainColor : Colors.grey,
         borderRadius: BorderRadius.circular(5),
       ),
     );

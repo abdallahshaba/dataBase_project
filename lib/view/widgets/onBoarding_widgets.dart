@@ -12,7 +12,10 @@ class OnboardingWidgets extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset(image , height: 350,),
+        Container(
+          height: 350,
+          width: 400,
+          child: Image.asset(image , fit: BoxFit.cover,)),
         const SizedBox(height: 20,),
         Text(title , style: Styles.boldtextStyle20, textAlign: TextAlign.center,),
         const SizedBox(height: 20),
