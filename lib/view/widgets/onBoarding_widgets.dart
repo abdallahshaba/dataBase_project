@@ -17,9 +17,9 @@ class OnboardingWidgets extends StatelessWidget {
           width: 400,
           child: Image.asset(image , fit: BoxFit.cover,)),
         const SizedBox(height: 20,),
-        Text(title , style: Styles.boldtextStyle20, textAlign: TextAlign.center,),
+        Text(title , style: Styles.boldtextStyle22, textAlign: TextAlign.center,),
         const SizedBox(height: 20),
-        Text(decription , style: Styles.regulartextStyle14, textAlign: TextAlign.center,) , 
+        Text(decription , style: Styles.regulartextStyle16, textAlign: TextAlign.center,) , 
       ],
     );
   }

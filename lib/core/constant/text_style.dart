@@ -49,6 +49,9 @@ class Styles {
    static const TextStyle regulartextStyle18 = TextStyle(
     fontSize: 18 , fontWeight: FontWeight.normal , fontFamily: 'Poppins'
   );
+   static const TextStyle regulartextStyle12 = TextStyle(
+    fontSize: 12 , fontWeight: FontWeight.normal , fontFamily: 'Poppins'
+  );
 
    static const TextStyle regulartextStyle16 = TextStyle(
     fontSize: 16  , fontWeight: FontWeight.w500, fontFamily: 'Poppins'

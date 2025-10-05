@@ -1,6 +1,7 @@
 import 'package:e_commerce_app14/core/constant/colorsStyle.dart';
 import 'package:e_commerce_app14/core/constant/imageAsset.dart';
 import 'package:e_commerce_app14/core/constant/text_style.dart';
+import 'package:e_commerce_app14/view/screens/auth/login.dart';
 import 'package:e_commerce_app14/view/widgets/onBoarding_widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -94,7 +95,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             
                               onPressed: () {
                                 // Navigate to home screen or next step
-                                // Example: Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => HomeScreen()));
+                                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const LoginScreen()));
                                 print("Onboarding completed!");
                               },
                               child: const Text("Get Started" , style: Styles.boldtextStyle18,),
