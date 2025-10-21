@@ -1,9 +1,12 @@
 import 'package:e_commerce_app14/core/constant/colorsStyle.dart';
 import 'package:e_commerce_app14/core/constant/imageAsset.dart';
 import 'package:e_commerce_app14/core/constant/text_style.dart';
+import 'package:e_commerce_app14/core/services/services.dart';
 import 'package:e_commerce_app14/view/screens/auth/login.dart';
 import 'package:e_commerce_app14/view/widgets/onBoarding_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 
 
@@ -18,6 +21,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
+  MyServices myServices = Get.find();
   final List<Map<String, String>> onboardingData = [
      {
     "title": "All your favorites",
@@ -96,6 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               onPressed: () {
                                 // Navigate to home screen or next step
                                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => const LoginScreen()));
+                                myServices.sharedPreference.setString("onBoarding" , "1");
                                 print("Onboarding completed!");
                               },
                               child: const Text("Get Started" , style: Styles.boldtextStyle18,),

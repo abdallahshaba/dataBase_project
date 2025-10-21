@@ -1,6 +1,12 @@
 import 'package:e_commerce_app14/appRoutes.dart';
+import 'package:e_commerce_app14/core/class/statusRequest.dart';
+import 'package:e_commerce_app14/core/constant/colorsStyle.dart';
+import 'package:e_commerce_app14/core/constant/imageAsset.dart';
+import 'package:e_commerce_app14/core/functions/handlingDataContr.dart';
+import 'package:e_commerce_app14/data/data_source/remote/auth/login_remote.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 
 abstract class LoginControoler extends GetxController {
@@ -15,6 +21,9 @@ class LoginControllerImp extends LoginControoler{
   GlobalKey<FormState> formState = GlobalKey<FormState>();
 
 
+  LoginpData loginpData = LoginpData(Get.find());
+   late Statusrequest statusrequest;
+     List data = [];
 
   @override
   goToRegisterScreen() {
@@ -22,13 +31,37 @@ class LoginControllerImp extends LoginControoler{
   }
   
   @override
-  login() {
+  login() async{
     var formData = formState.currentState;
     if(formData!.validate()){
-      print("valid");
+         statusrequest = Statusrequest.loading;
+    var response = await loginpData.postDataa(email.text , password.text);
+    statusrequest = handlingDataController(response);
+
+    if(Statusrequest.success == statusrequest){
+      if(response['status'] =='success'){
+         Get.snackbar("Ya", response['message']);
+        Get.offNamed(AppRoutes.homeMain);
+       
+      }
+      else {
+        statusrequest = Statusrequest.serverFaliure;
+         Get.defaultDialog(
+              title: "ُWarning",
+              titleStyle: const TextStyle(
+                  fontWeight: FontWeight.bold, color: AppColors.mainColor),
+              middleText: response['message'], 
+              middleTextStyle: const TextStyle(fontWeight: FontWeight.bold),
+              actions: [
+                Lottie.asset(AppImageAsset.failedFace, height: 220, width: 300)
+              ]);
+      }
+     
+    }
+    update();
     }
     else{
-      print("not valid");
+        statusrequest = Statusrequest.failure;
     }
   }
 

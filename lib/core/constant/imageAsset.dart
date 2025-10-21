@@ -12,7 +12,7 @@ class AppImageAsset {
   static const String onBoarding22 = '$routeImage/onBoarding2Png.png';
   static const String onBoarding33 = '$routeImage/onBoarding3Png.png';
   static const String logo = '$routeImage/logo.png';
-  static const String logo1 = '$routeImage/logoPng.png';
+  static const String logo1 = '$routeImage/Foodgo.png';
 
 
 

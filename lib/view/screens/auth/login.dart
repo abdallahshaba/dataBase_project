@@ -74,26 +74,35 @@ class LoginScreen extends StatelessWidget {
                           style: Styles.regulartextStyle14
                         ),
                         const SizedBox(height: 8),
-                         CustomTextFieldAuth(
-                          validator: (val) {
-                            return validInput(val!, 5, 100, "email");
-                          },
-                          iconData: const Icon(Icons.email_outlined),
-                          hintText: "Enter your email"),     
-                        const SizedBox(height: 20),
-                        // Password Field
-                        const Text(
+               CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 2, 100, "email");
+                      },
+                      mycontroller: controllerImp.email ,
+                      labeltext: "Email",
+                      hinttext: 'Enter Email',
+                      iconData: Icons.email_outlined,
+                    ),    
+                        const SizedBox(height: 10),
+
+                         const Text(
                           "Password",
                           style: Styles.regulartextStyle14
                         ),
-                        const SizedBox(height: 8),
-                         CustomTextFieldAuth(
-                          validator: (val) {
-                            return validInput(val!, 5, 100, "password");
-                          },
-                          hintText: "Enter Password", iconData: const Icon(Icons.visibility_outlined)),
-                        const SizedBox(height: 20),
-          
+                        const SizedBox(height: 10),
+
+               CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 2, 100, "Password");
+                      },
+                      mycontroller: controllerImp.password ,
+                      labeltext: "Password",
+                      hinttext: 'Enter Password',
+                      iconData: Icons.password_outlined,
+                    ),    
+                   
                    
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,8 +132,8 @@ class LoginScreen extends StatelessWidget {
                         const SizedBox(height: 70),
 
                         CustomButtonAuth(
-                          onPressed: () {
-                            controllerImp.login();
+                          onPressed: () async{
+                           await controllerImp.login();
                           },
                           style: Styles.boldtextStyle16,
                           foregroundColor: Colors.white,

@@ -70,57 +70,58 @@ class SignUpScreen extends StatelessWidget {
                           style: Styles.regulartextStyle14
                         ),
                         const SizedBox(height: 8),
-                         CustomTextFieldAuth(
-                          validator:(val) {
-                            return validInput(val!, 5, 100, "username");
-                          },
-                          iconData: const Icon(Icons.abc_outlined),
-                          hintText: "Enter your name"),     
+                        CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 2, 100, "username");
+                      },
+                      mycontroller: controllerImp.username ,
+                      labeltext: "username",
+                      hinttext: 'Enter username',
+                      iconData: Icons.email_outlined,
+                    ),    
                         const SizedBox(height: 20),
           
-          
-                         const Text(
-                          "Email",
-                          style: Styles.regulartextStyle14
-                        ),
-                        const SizedBox(height: 8),
-                          CustomTextFieldAuth(
-                          validator:(val) {
-                            return validInput(val!, 3, 100, "email");
-                          },
-                          iconData: const Icon(Icons.email_outlined),
-                          hintText: "Enter your email"),     
+  
+                         CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 5, 100, "email");
+                      },
+                      mycontroller: controllerImp.email ,
+                      labeltext: "Email",
+                      hinttext: 'Enter Your Email',
+                      iconData: Icons.email_outlined,
+                    ), 
                         const SizedBox(height: 20),
-          
-          
-                        const Text(
-                          "Password",
-                          style: Styles.regulartextStyle14
-                        ),
-                        const SizedBox(height: 8),
-                        const SizedBox(height: 8),
-                         CustomTextFieldAuth(
-                          validator:(val) {
-                            return validInput(val!, 2, 100, "password");
-                          },
-                          hintText: "Enter Password", 
-                          iconData: const Icon(Icons.visibility_outlined)),
+
+                       CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 5, 100, "phone");
+                      },
+                      mycontroller: controllerImp.phone ,
+                      labeltext: "Phone",
+                      hinttext: 'Enter Your phone',
+                      iconData: Icons.phone_android_outlined,
+                    ), 
           
                         const SizedBox(height: 20),
-                        const Text(
-                          "Phone",
-                          style: Styles.regulartextStyle14
-                        ),
-                        const SizedBox(height: 8),
-                         CustomTextFieldAuth(
-                          validator:(val) {
-                            return validInput(val!, 5, 100, "phone");
-                          },
-                          hintText: "Enter your phone", iconData: Icon(Icons.phone_android_outlined)),
+                       
+                         CustomTextFormAuth(
+                      isNumber: false,
+                       valid: (value) {
+                        return validInput(value!, 5, 100, "password");
+                      },
+                      mycontroller: controllerImp.password ,
+                      labeltext: "Password",
+                      hinttext: 'Enter Your password',
+                      iconData: Icons.password_outlined,
+                    ), 
                         const SizedBox(height: 25),
                         CustomButtonAuth(
-                          onPressed: () {
-                            controllerImp.signUp();
+                          onPressed: () async {
+                           await controllerImp.signUp();
                           },
                           style: Styles.boldtextStyle16,
                           foregroundColor: Colors.white,

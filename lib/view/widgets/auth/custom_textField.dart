@@ -1,26 +1,74 @@
+
+// ignore_for_file: file_names
+
+import 'package:e_commerce_app14/core/constant/colorsStyle.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFieldAuth extends StatelessWidget {
-  const CustomTextFieldAuth({super.key, required this.hintText, required this.iconData, this.validator});
-  final String hintText;
-  final Icon? iconData;
-  final  String? Function(String?)? validator;
+class CustomTextFormAuth extends StatelessWidget {
+  final String hinttext;
+  final String? labeltext;
+  final IconData iconData;
+  final TextEditingController? mycontroller;
+  final String? Function(String?) valid;
+  final bool isNumber;
+  final bool? obscureText;
+  final void Function()? onTapIcon;
+
+  // ignore: use_super_parameters
+  const CustomTextFormAuth(
+      {Key? key,
+      this.obscureText,
+      this.onTapIcon,
+      required this.hinttext,
+      required this.labeltext,
+      required this.iconData,
+      required this.mycontroller,
+      required this.valid,
+      required this.isNumber})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      validator: validator ,
-                        keyboardType: TextInputType.emailAddress,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.grey[100],
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide.none,
-                          ),
-                          hintText: hintText,
-                          hintStyle: TextStyle(color: Colors.grey[500]),
-                          suffixIcon: iconData
-                        ),
-                      );
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        keyboardType: isNumber
+            ? const TextInputType.numberWithOptions(decimal: true)
+            : TextInputType.text,
+        validator: valid,
+        controller: mycontroller,
+        obscureText: obscureText == null || obscureText == false  ? false : true,
+        decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(
+              width: 0.3,
+              color: AppColors.kBackgroundColorMain),
+            borderRadius: BorderRadius.horizontal(right: Radius.circular(10) , left: Radius.circular(10))
+          ),
+          focusedBorder: const OutlineInputBorder(
+           borderSide: BorderSide(color: AppColors.kBackgroundColorMain),
+            borderRadius: BorderRadius.horizontal(right: Radius.circular(10) , left: Radius.circular(10))
+          ),
+          errorBorder: const OutlineInputBorder(
+           borderSide: BorderSide(color: Color.fromARGB(255, 186, 33, 22)),
+            borderRadius: BorderRadius.horizontal(right: Radius.circular(10) , left: Radius.circular(10))
+          ),
+          focusedErrorBorder: const OutlineInputBorder(
+           borderSide: BorderSide(color: Colors.blue),
+            borderRadius: BorderRadius.horizontal(right: Radius.circular(10) , left: Radius.circular(10))
+          ),
+          fillColor: Colors.white,
+          filled: true,
+            hintText: hinttext,
+            hintStyle: const TextStyle(fontSize: 14),
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+           
+            suffixIcon: InkWell(onTap: onTapIcon, child: Icon(iconData)),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+      ),
+    );
   }
 }
